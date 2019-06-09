@@ -6,8 +6,8 @@ sql.cargarDatosDeConexcion();
 
 const rutasDeArtista = require("./rutas/rutasArtista")
 //const rutasDeCancion = require("./rutas/rutasCancion")
-//const rutasDeDisco = require("./rutas/rutasDisco")
-//const rutasDeGenero = require("./rutas/rutasGenero")
+const rutasDeDisco = require("./rutas/rutasDisco")
+const rutasDeGenero = require("./rutas/rutasGenero")
 const rutasDeUsuario = require("./rutas/rutasUsuario")
 
 // puerto en el que esuchara el server
@@ -31,9 +31,10 @@ app.get("/", function (req, res, next) {
 
 app.use(rutasDeArtista);
 //app.use(rutasDeCancion);
-//app.use(rutasDeDisco);
-//app.use(rutasDeGenero);
+app.use(rutasDeDisco);
+app.use(rutasDeGenero);
 app.use(rutasDeUsuario);
+
 
 
 
