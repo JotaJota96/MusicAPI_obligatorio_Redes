@@ -57,4 +57,66 @@ function camposValido(objAValidar){
     }
     return true;
 }
+
+function obtenerSentenciaSelectTodos(){
+    return "SELECT * FROM artistas"
+}
+
+function obtenerSentenciaSelectEspecifico(id){
+    return "SELECT * FROM artistas WHERE nombre = '" + id + "'"
+}
+
+function obtenerSentenciaInsert(o){ 
+    // retorna la consulta INSERT para el objeto u (usuario)
+    // se asume que el objeto es de tipo usuario
+    var ret = "INSERT INTO artistas (nombre, nacionalidad, instrumento) VALUES (";
+    ret += "'" + o.nombre + "', ";
+    ret += "'" + o.nacionalidad + "', ";
+    ret += "'" + o.instrumento + "') returning *";
+    return ret;
+}
+
+function obtenerSentenciaUpdate(o, id){
+    // obtiene las keys a actualizar
+    var oKeys = Object.keys(o);
+
+    var ret = "UPDATE artistas SET "
+
+    // recorre las keys a actualizar y dependiendo de cual sea, agrega los datos a la consulta
+    for (var i = 0; i < oKeys.length; i++) {
+        switch (oKeys[i]){
+            case "nombre":
+                ret += "nombre = '" + o.nombre + "'";
+                break;
+            case "nacionalidad":
+                ret += "nacionalidad = '" + o.nacionalidad + "'";
+                break;
+            case "instrumento":
+                ret += "instrumento = '" + o.instrumento + "'";
+                break;
+            default:
+                break;            
+        }
+        // si no es la ultima iteracion del for, agrega una coma
+        if (i+1 < oKeys.length){
+            ret += ", ";
+        }
+    }
+    ret += "WHERE nombre = '" + id + "' returning *"
+    return ret;
+}
+
+function obtenerSentenciaDelete(id){
+    return "DELETE FROM artistas WHERE nombre = '" + id + "' returning *"
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+exports.objetoValido = objetoValido;
+exports.camposValido = camposValido;
+exports.obtenerSentenciaSelectTodos = obtenerSentenciaSelectTodos;
+exports.obtenerSentenciaSelectEspecifico = obtenerSentenciaSelectEspecifico;
+exports.obtenerSentenciaInsert = obtenerSentenciaInsert;
+exports.obtenerSentenciaUpdate = obtenerSentenciaUpdate;
+exports.obtenerSentenciaDelete = obtenerSentenciaDelete;
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

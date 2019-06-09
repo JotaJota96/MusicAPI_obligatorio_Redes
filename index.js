@@ -4,7 +4,7 @@ var app = express();
 var sql = require('./datos/conexcionPostgresSQL')
 sql.cargarDatosDeConexcion();
 
-//const rutasDeArtista = require("./rutas/rutasArtista")
+const rutasDeArtista = require("./rutas/rutasArtista")
 //const rutasDeCancion = require("./rutas/rutasCancion")
 //const rutasDeDisco = require("./rutas/rutasDisco")
 //const rutasDeGenero = require("./rutas/rutasGenero")
@@ -29,7 +29,7 @@ app.get("/", function (req, res, next) {
     res.send('¡Bienvenido!')
 });
 
-//app.use(rutasDeArtista);
+app.use(rutasDeArtista);
 //app.use(rutasDeCancion);
 //app.use(rutasDeDisco);
 //app.use(rutasDeGenero);
