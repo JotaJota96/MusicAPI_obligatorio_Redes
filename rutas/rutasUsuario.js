@@ -1,23 +1,28 @@
 // framework express
 var express = require('express'), bodyParser = require('body-parser');
+
+// para manejar las rutas
 var rutas = express.Router();
-const usuarios = require("./../datos/usuarios")
-const SQL = require('./../datos/conexcionPostgresSQL')
+
 //para  leer JOSN del cuerpo de las peticiones
 rutas.use(bodyParser.json());
+
+// para verificar datos y ejecutar consultas
+const usuarios = require("./../datos/usuarios")
+const SQL = require('./../datos/conexcionPostgresSQL')
 
 
 // al recibir un GET para /usuarios
 rutas.get("/usuarios", function (req, res, next) {
-    // consulta a la base de datos y dependiendo de lo que devuelva retorna la informacion o un error
-    
+    // obtiene la consulta SQL
     var consulta = usuarios.obtenerSentenciaSelectTodos()
 
+    // consulta a la base de datos
     SQL.ejecutarConsulta(consulta)
-    .then(resultadoDeConsulta=>{
+    .then(resultadoDeConsulta=>{ // si la consulta fue exitosa se ejecuta esta parte
         res.send(resultadoDeConsulta)
     })
-    .catch(err=>{
+    .catch(err=>{ // si hubo un error se ejecuta esta parte
         res.status(500).send(err)
     })
 });
@@ -27,18 +32,19 @@ rutas.get("/usuarios", function (req, res, next) {
 rutas.get("/usuarios/:id", function (req, res, next) {
     // devuelve el json del usuario con id solicitado
 
+    // obtiene la consulta SQL
     var consulta = usuarios.obtenerSentenciaSelectEspecifico(req.params.id);
     
-    // realiza la consulta y puede ser exitosa o fallida
+    // consulta a la base de datos
     SQL.ejecutarConsulta(consulta)
-    .then(resultadoDeConsulta=>{    // si es exitosa
-        if (resultadoDeConsulta.length !== 0){ // si la consulta da un resultado
+    .then(resultadoDeConsulta=>{ // si la consulta fue exitosa se ejecuta esta parte
+        if (resultadoDeConsulta.length !== 0){ // si la consulta da algun resultado
             res.send(resultadoDeConsulta);
         }else{  // si la consulta no da ningun resultado
             res.status(404).send({ error : 'usuario no encontrado' });
         }
     })
-    .catch(err=>{   // si no es exitosa porque ocurrio un error al realizarl
+    .catch(err=>{ // si hubo un error se ejecuta esta parte
         res.status(500).send(err)
     })
 });
@@ -47,19 +53,23 @@ rutas.get("/usuarios/:id", function (req, res, next) {
 // al pedir crear un usuario nuevo
 rutas.post("/usuarios", function (req, res, next) {
     // si el JSON recibido es correcto se agrega el usuario
-    // si se obtiene undefined es que no se pudo agregar
+
+    // verifica que los datos recibidos son validos
     if (usuarios.objetoValido(req.body)){
 
+        // obtiene la consulta SQL
         var consulta = usuarios.obtenerSentenciaInsert(req.body);
+        
+        // consulta a la base de datos
         SQL.ejecutarConsulta(consulta)
-        .then(resultadoDeConsulta=>{    // si es exitosa
-            if (resultadoDeConsulta.length !== 0){ // si la consulta da un resultado
+        .then(resultadoDeConsulta=>{ // si la consulta fue exitosa se ejecuta esta parte
+            if (resultadoDeConsulta.length !== 0){ // si la consulta da algun resultado
                 res.send(resultadoDeConsulta);
             }else{  // si la consulta no da ningun resultado
                 res.status(404).send({ error : 'usuario no encontrado' });
             }
         })
-        .catch(err=>{   // si no es exitosa porque ocurrio un error al realizarl
+        .catch(err=>{ // si hubo un error se ejecuta esta parte
             res.status(500).send(err)
         })
     }else{
@@ -70,17 +80,22 @@ rutas.post("/usuarios", function (req, res, next) {
 
 // al querer actualizar un usuario
 rutas.put("/usuarios/:id", function (req, res, next) {
+    // verifica que los datos recibidos son validos
     if (usuarios.camposValido(req.body)){
+        
+        // obtiene la consulta SQL
         var consulta = usuarios.obtenerSentenciaUpdate(req.body, req.params.id);
+        
+        // consulta a la base de datos
         SQL.ejecutarConsulta(consulta)
-        .then(resultadoDeConsulta=>{    // si es exitosa
-            if (resultadoDeConsulta.length !== 0){ // si la consulta da un resultado
+        .then(resultadoDeConsulta=>{ // si la consulta fue exitosa se ejecuta esta parte
+            if (resultadoDeConsulta.length !== 0){ // si la consulta da algun resultado
                 res.send(resultadoDeConsulta);
             }else{  // si la consulta no da ningun resultado
                 res.status(404).send({ error : 'usuario no encontrado' });
             }
         })
-        .catch(err=>{   // si no es exitosa porque ocurrio un error al realizarl
+        .catch(err=>{ // si hubo un error se ejecuta esta parte
             res.status(500).send(err)
         })
     }else{
@@ -93,19 +108,19 @@ rutas.put("/usuarios/:id", function (req, res, next) {
 // al solicitar eliminar un usuario
 rutas.delete("/usuarios/:id", function (req, res, next) {
 // devuelve el json del usuario con id solicitado
-    // obtiene la consulta para eliminar al usuario
+    // obtiene la consulta SQL
     var consulta = usuarios.obtenerSentenciaDelete(req.params.id)
     
-    // realiza la consulta y puede ser exitosa o fallida
+    // consulta a la base de datos
     SQL.ejecutarConsulta(consulta)
-    .then(resultadoDeConsulta=>{    // si es exitosa
-        if (resultadoDeConsulta.length !== 0){ // si la consulta da un resultado
+    .then(resultadoDeConsulta=>{ // si la consulta fue exitosa se ejecuta esta parte
+        if (resultadoDeConsulta.length !== 0){ // si la consulta da algun resultado
             res.send(resultadoDeConsulta);
         }else{  // si la consulta no da ningun resultado
             res.status(404).send({ error : 'usuario no encontrado' });
         }
     })
-    .catch(err=>{   // si no es exitosa porque ocurrio un error al realizarl
+    .catch(err=>{ // si hubo un error se ejecuta esta parte
         res.status(500).send(err)
     })
 });

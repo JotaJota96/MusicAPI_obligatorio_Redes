@@ -7,6 +7,7 @@ const objetoModelo = {
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// dado un objeto, devuelve true si sus claves son iguales a la del objeto modelo
 function objetoValido(objAValidar){
     // retorna true si el objeto es de tipo usuario
     // funcion extraida de: (aunque no funcionaba pero la arregle)
@@ -35,6 +36,7 @@ function objetoValido(objAValidar){
     return true;
 }
 
+// dado un objeto, deuelve true si las keys de este pertenecen a las del objeto modelo
 function camposValido(objAValidar){
     // para cada objeto, guarda un array cuyos elementos sera el nombre de los atributos del objeto (key)
     var aKeys = Object.keys(objAValidar).sort();
@@ -71,7 +73,7 @@ function obtenerSentenciaSelectEspecifico(id){
 
 function obtenerSentenciaInsert(o){
     // retorna la consulta INSERT para el objeto u (usuario)
-    // se asume que el objeto u es de tipo usuario
+    // se asume que el objeto es de tipo usuario
     var ret = "INSERT INTO usuarios (nickname, nombre, apellido, email) VALUES (";
     ret += "'" + o.nickname + "', ";
     ret += "'" + o.nombre + "', ";
@@ -81,9 +83,12 @@ function obtenerSentenciaInsert(o){
 }
 
 function obtenerSentenciaUpdate(o, id){
+    // obtiene las keys a actualizar
     var oKeys = Object.keys(o);
+
     var ret = "UPDATE usuarios SET "
 
+    // recorre las keys a actualizar y dependiendo de cual sea, agrega los datos a la consulta
     for (var i = 0; i < oKeys.length; i++) {
         switch (oKeys[i]){
             case "nickname":
@@ -101,6 +106,7 @@ function obtenerSentenciaUpdate(o, id){
             default:
                 break;            
         }
+        // si no es la ultima iteracion del for, agrega una coma
         if (i+1 < oKeys.length){
             ret += ", ";
         }
