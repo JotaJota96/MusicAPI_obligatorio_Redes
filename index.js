@@ -4,6 +4,10 @@ var app = express();
 var sql = require('./datos/conexcionPostgresSQL')
 sql.cargarDatosDeConexcion();
 
+//const rutasDeArtista = require("./rutas/rutasArtista")
+//const rutasDeCancion = require("./rutas/rutasCancion")
+//const rutasDeDisco = require("./rutas/rutasDisco")
+//const rutasDeGenero = require("./rutas/rutasGenero")
 const rutasDeUsuario = require("./rutas/rutasUsuario")
 
 // puerto en el que esuchara el server
@@ -15,12 +19,20 @@ app.listen(numPuerto, function () {
 });
 
 
+app.get("*", function(req, res, next){
+    console.log('Peticion recibida: ' + req.method + ' ' + req.url);
+    next();
+})
+
 // al recibir un GET para /
 app.get("/", function (req, res, next) {
     res.send('¡Bienvenido!')
 });
 
-
+//app.use(rutasDeArtista);
+//app.use(rutasDeCancion);
+//app.use(rutasDeDisco);
+//app.use(rutasDeGenero);
 app.use(rutasDeUsuario);
 
 
