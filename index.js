@@ -7,6 +7,7 @@ var morgan = require('morgan');
 var sql = require('./datos/conexcionPostgresSQL')
 sql.cargarDatosDeConexcion();
 
+
 // archivos de rutas
 const rutasDeArtista = require("./rutas/rutasArtista")
 const rutasDeCancion = require("./rutas/rutasCancion")
@@ -22,6 +23,7 @@ app.listen(numPuerto, function () {
     console.log("Servidor iniciado en puerto " + numPuerto);
 });
 
+
 // al recibir un GET para /
 app.get("/", function (req, res, next) {
     res.send('¡Bienvenido!')
@@ -34,7 +36,6 @@ app.use(rutasDeCancion);
 app.use(rutasDeDisco);
 app.use(rutasDeGenero);
 app.use(rutasDeUsuario);
-
 
 
 /*

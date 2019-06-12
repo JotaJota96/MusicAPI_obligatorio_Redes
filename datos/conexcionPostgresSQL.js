@@ -10,12 +10,25 @@ function cargarDatosDeConexcion(){
     
     fs.readFile('./datos/datosDeConexcion.json', 'utf-8', (err, data) => {
         if(err) {
+            console.log("Error al cargar los datos de conexion para la base de datos");
             console.log('error: ', err);
+            console.log("El servidor se cerrara");
             process.exit();
         } else {
             //connectionData = data;
             connectionData =JSON.parse(data)
             console.log("Se han cargado los datos de conexcion a la base de datos");
+            var consulta = "SELECT 'test de conexion'"
+            ejecutarConsulta(consulta)
+            .then((resultadoDeConsulta)=>{
+                console.log("Se ha establecido conexion con la base de datos");
+            })
+            .catch((err)=>{
+                console.log("No se ha podido establecer la conexion con la base de datos");
+                console.log(err);
+                console.log("El servidor se cerrara");
+                process.exit();
+            })
         }
     });
     /*
