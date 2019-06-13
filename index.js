@@ -26,7 +26,15 @@ app.listen(numPuerto, function () {
 
 // al recibir un GET para /
 app.get("/", function (req, res, next) {
-    res.send('¡Bienvenido!')
+    const fs = require('fs');
+    fs.readFile('./datos/home.html', 'utf-8', (err, data) => {
+        if (err){
+            res.send('Bienvenido');
+        }else{
+            res.send(data);
+        }
+    });
+
 });
 
 
