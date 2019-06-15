@@ -1,0 +1,670 @@
+{
+	"info": {
+		"_postman_id": "efe8f828-8a4e-4856-802b-fe58f4720f65",
+		"name": "lab_redes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Artistas",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artistas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artistas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artistas/artista_1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artistas",
+								"artista_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"artista_10\",\r\n\t\"nacionalidad\": \"nacionalidad_4\",\r\n\t\"instrumento\": \"instrumento_5\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/artistas/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artistas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nacionalidad\": \"NACIONALIDAD_4\",\r\n\t\"instrumento\": \"instrumento_1\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/artistas/artista_10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artistas",
+								"artista_10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/artistas/artista_10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artistas",
+								"artista_10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Canciones",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/canciones",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"canciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/canciones/cancion_1/titulo_1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"canciones",
+								"cancion_1",
+								"titulo_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"titulodisco\": \"titulo_1\",\r\n\t\"nombre\": \"cancion_13\",\r\n\t\"duracion\": \"7:59\",\r\n\t\"enlace\": \"http://www.enlace0.com/\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/canciones/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"canciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"duracion\": \"8:00\",\r\n\t\"enlace\": \"http://www.enlace0.com/\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/canciones/cancion_13/titulo_1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"canciones",
+								"cancion_13",
+								"titulo_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/canciones/cancion_13/titulo_1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"canciones",
+								"cancion_13",
+								"titulo_1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discos",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/discos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/discos/titulo_3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discos",
+								"titulo_3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"titulo\": \"titulo_51\",\r\n\t\"anio\": \"2019\",\r\n\t\"nombregenero\": \"genero_5\",\r\n\t\"nombreartista\": \"artista_2\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/discos/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"anio\": \"2001\",\n\t\"nombregenero\": \"genero_4\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/discos/titulo_51",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discos",
+								"titulo_51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/discos/titulo_51",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discos",
+								"titulo_51"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generos",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/generos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/generos/genero_2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generos",
+								"genero_2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"genero_7\"\n}\n"
+						},
+						"url": {
+							"raw": "localhost:8080/generos/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"GENERO_7\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/generos/genero_7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generos",
+								"genero_7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/generos/GENERO_7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generos",
+								"GENERO_7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/usuario_2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"usuario_2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nickname\": \"usuario_10\",\n    \"nombre\": \"nombre_10\",\n    \"apellido\": \"apellido_10\",\n    \"email\": \"email_10@mail.com\"\n}\n"
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"NOMBRE_10\",\n    \"apellido\": \"APELLIDO_10\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/usuario_10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"usuario_10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/usuarios/usuario_10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"usuario_10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Principal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
